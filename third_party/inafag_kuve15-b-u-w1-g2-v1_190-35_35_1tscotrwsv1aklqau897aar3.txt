@@ -1,0 +1,14 @@
+﻿"Symbol";"Value";"Unit";
+"REFERENCE";"KUVE15-B-U-W1-G2-V1/190-35/35";"";
+"TraceParts.PartVersion";"1.4.4";"";
+"SUPPLIER";"Schaeffler Technologies AG & Co. KG";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartNumber";"69-18092006-796318";"";
+"TraceParts.PartLanguage";"en";"";
+"DESIGN";"Ball monorail guidance system";"";
+"TraceParts.InstanceId";"69-18092006-796318COIN5BDF7E44PM43MQQZ9580N";"";
+"TraceParts.PartTitle";"Ball monorail guidance systems KUVE..-B, standard carriage, four-row, full complement ball set; corrosion-resistant design possible";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartStatusId";"";"";
+"SELECTION";"KUVE15-B";"";
+"TraceParts.ClassPath";"INAFAG:/F_INAFAG/69-18092006-796318";"";
