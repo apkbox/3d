@@ -1,0 +1,101 @@
+    PORT0            PORT1                PORT2                 PORT3
+---------------------------------------------------------------------
+0   SW4/RESET                                                   LCD_EN
+1   SW5                                                         LCD_RW
+2   SD_SSEL          AOUT                                       LCD_RS
+3                    SWDIO                                          
+4   EE_SCL           ADC                                        PS2_DATA
+5   EE_SDA                                                      PS2_CLK 
+6                    RXD                  LCD_DATA4             X
+7   SW6/ACT_LED      TXD                  LCD_DATA5             X
+8   SD_MISO                               LCD_DATA6             X
+9   SD_MOSI                               LCD_DATA7             X
+10  SWCLK                                                       X
+11                   BUZZER               SD_SCK                X
+
+SCL/SDA - RTC, EEPROM
+
+Notes:
+    1. Disconnect JP2, JP3 to allow use of PIO2_1, PIO2_2.
+    2. PS2_DATA (PIO3_4) has 10k pullup to 5V.
+
+
+LPC1114 pin functions
+    * denotes non-I/O function by default
+=============================================
+    PORT0                       PORT1                      PORT2                 PORT3
+-----------------------------------------------------------------------
+0   *RESET/IO                   AD1/CT32B1_CAP0            DTR/SSEL1             DTR/CT16B0_MAT0/TXD
+1   CLKOUT/CT32B0MAT2           AD2/CT32B1_MAT0            DSR/SCK1              DSR/CT16B0_MAT1/RXD
+2   SSEL0/CT16B0_CAP0           AD3/CT32B1_MAT1            DCD/MISO1             DCD/CT16B0_MAT2/SCK1
+3   IO                          *SWDIO/IO/AD4/CT32B1_MAT2  RI/MOSI1              RI/CT16B0_CAP0
+4   SCL                         AD5/CT32B1_MAT3/WAKEUP     CT16B1_MAT1/SSEL1     CT16B0_CAP1/RXD
+5   SDA                         RTS/CT32B0_CAP0            CT32B0_MAT0           CT16B1_CAP1/TXD
+6   SCK0                        RXD/CT32B0_MAT0            CT32B0_MAT1           X
+7   CTS                         TXD/CT32B0_MAT1            CT32B0_MAT2/RXD       X
+8   MISO0/CT16B0_MAT0           CT16B1_CAP0                CT32B0_MAT3/TXD       X
+9   MOSI0/CT16B0_MAT1           CT16B1_MAT0                CT32B0_CAP0           X
+10  *SWCLK/IO/SCK0/CT16B0_MAT2  AD6/CT16B1_MAT1/MISO1      IO                    X
+11  AD0/CT32B0_MAT3             AD7/CT32B1_CAP1            SCK0/CT32B0_CAP1      X
+
+
+mX Baseboard header
+=============================================
+GND                       VOUT (+3.3V out)
+VIN (4.5-5.5V)            not used
+not used                  not used
+PIO0_0  RESET#            not used
+PIO0_9  MOSI              not used
+PIO0_8  MISO              not used
+PIO2_11 SCK               not used
+PIO0_2  SSEL              not used
+PIO1_7  TXD               PIO2_4      USB_DM
+PIO1_6  RXD               PIO2_5      USB_DP
+PIO0_7  EXT_SW            PIO0_1      ISP
+PIO2_0                    PIO0_3      VBUS
+PIO2_1  TXD1              PIO0_5      SDA
+PIO2_2  RXD1              PIO0_4      SCL
+PIO0_11 VGA_R             PIO1_9      VGA_VSYNC
+PIO1_0  VGA_G             PIO1_10     VGA_HSYNC
+PIO1_1  VGA_B             PIO1_11     BUZZER
+PIO1_2  AOUT              PIO2_3      PWM2
+PIO1_3                    PIO3_4      PS2_DATA
+PIO1_4  ADC               PIO3_5      PS2_CLK
+PIO1_5  PIO1.5            PIO2_6      LCD_D4
+PIO1_8  PIO1.8            PIO2_7      LCD_D5
+PIO0_6  USB_CONNECT       PIO2_8      LCD_D6
+PIO0_10 SWCLK             PIO2_9      LCD_D7
+PIO3_0  LCD_EN            PIO2_10
+PIO3_1  LCD_RW            PIO3_3
+PIO3_2  LCD_RS            GND
+
+
+LPCExpresso header
+=============================================
+GND                       VOUT (+3.3V out)
+VIN (4.5-5.5V)            not used
+not used                  not used
+PIO0_0  RESET             not used
+PIO0_9  MOSI/SWO          not used
+PIO0_8  MISO              not used
+PIO2_11 SCK               not used
+PIO0_2  SSEL              not used
+PIO1_7  TXD               PIO2_4
+PIO1_6  RXD               PIO2_5
+PIO0_7                    PIO0_1
+PIO2_0                    PIO0_3
+PIO2_1                    PIO0_5
+PIO2_2                    PIO0_4
+PIO0_11 AD0               PIO1_9
+PIO1_0  AD1               PIO1_10
+PIO1_1  AD2               PIO1_11
+PIO1_2  AD3               PIO2_3
+PIO1_3  AD4/SWDIO         PIO3_4
+PIO1_4  AD5               PIO3_5
+PIO1_5                    PIO2_6
+PIO1_8                    PIO2_7
+PIO0_6                    PIO2_8
+PIO0_10 SWCLK             PIO2_9
+PIO3_0                    PIO2_10
+PIO3_1                    PIO3_3
+PIO3_2                    GND
