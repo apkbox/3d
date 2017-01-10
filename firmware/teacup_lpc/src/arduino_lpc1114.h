@@ -199,6 +199,8 @@
 #define PIO0_11_MATCH   0
 #define PIO0_11_PWM     0
 
+// PORT1 //////////////////////////////////////////////
+
 #define PIO1_0_CMSIS    R_PIO1_0
 #define PIO1_0_PIN      0
 #define PIO1_0_PORT     LPC_GPIO1
@@ -287,7 +289,55 @@
 #define PIO1_9_MATCH    0
 #define PIO1_9_PWM      (0x01 << 0)
 
-////////////////////////////////////////////////
+#define PIO1_10_CMSIS    PIO1_10
+#define PIO1_10_PIN      10
+#define PIO1_10_PORT     LPC_GPIO1
+#define PIO1_10_OUTPUT   0x00
+#define PIO1_10_TIMER    LPC_TMR16B1
+#define PIO1_10_MATCH    0
+#define PIO1_10_PWM      0
+
+#define PIO1_11_CMSIS    PIO1_11
+#define PIO1_11_PIN      11
+#define PIO1_11_PORT     LPC_GPIO1
+#define PIO1_11_OUTPUT   (0x01 << 7)
+#define PIO1_11_TIMER    NO_TIMER
+#define PIO1_11_MATCH    0
+#define PIO1_11_PWM      0
+
+// PORT2 //////////////////////////////////////////////
+
+#define PIO2_0_CMSIS    PIO2_0
+#define PIO2_0_PIN      0
+#define PIO2_0_PORT     LPC_GPIO2
+#define PIO2_0_OUTPUT   0x00
+#define PIO2_0_TIMER    NO_TIMER
+#define PIO2_0_MATCH    0
+#define PIO2_0_PWM      0
+
+#define PIO2_1_CMSIS    PIO2_1
+#define PIO2_1_PIN      1
+#define PIO2_1_PORT     LPC_GPIO2
+#define PIO2_1_OUTPUT   0x00
+#define PIO2_1_TIMER    NO_TIMER
+#define PIO2_1_MATCH    0
+#define PIO2_1_PWM      0
+
+#define PIO2_2_CMSIS    PIO2_2
+#define PIO2_2_PIN      2
+#define PIO2_2_PORT     LPC_GPIO2
+#define PIO2_2_OUTPUT   0x00
+#define PIO2_2_TIMER    NO_TIMER
+#define PIO2_2_MATCH    0
+#define PIO2_2_PWM      0
+
+#define PIO2_3_CMSIS    PIO2_3
+#define PIO2_3_PIN      3
+#define PIO2_3_PORT     LPC_GPIO2
+#define PIO2_3_OUTPUT   0x00
+#define PIO2_3_TIMER    NO_TIMER
+#define PIO2_3_MATCH    0
+#define PIO2_3_PWM      0
 
 #define PIO2_4_CMSIS    PIO2_4
 #define PIO2_4_PIN      4
@@ -344,3 +394,61 @@
 #define PIO2_10_TIMER    NO_TIMER
 #define PIO2_10_MATCH    0
 #define PIO2_10_PWM      0
+
+#define PIO2_11_CMSIS    PIO2_11
+#define PIO2_11_PIN      11
+#define PIO2_11_PORT     LPC_GPIO2
+#define PIO2_11_OUTPUT   0x00
+#define PIO2_11_TIMER    NO_TIMER
+#define PIO2_11_MATCH    0
+#define PIO2_11_PWM      0
+
+// PORT3 //////////////////////////////////////////////
+
+#define PIO3_0_CMSIS    PIO3_0
+#define PIO3_0_PIN      0
+#define PIO3_0_PORT     LPC_GPIO3
+#define PIO3_0_OUTPUT   0x00
+#define PIO3_0_TIMER    NO_TIMER
+#define PIO3_0_MATCH    0
+#define PIO3_0_PWM      0
+
+#define PIO3_1_CMSIS    PIO3_1
+#define PIO3_1_PIN      1
+#define PIO3_1_PORT     LPC_GPIO3
+#define PIO3_1_OUTPUT   0x00
+#define PIO3_1_TIMER    NO_TIMER
+#define PIO3_1_MATCH    0
+#define PIO3_1_PWM      0
+
+#define PIO3_2_CMSIS    PIO3_2
+#define PIO3_2_PIN      2
+#define PIO3_2_PORT     LPC_GPIO3
+#define PIO3_2_OUTPUT   0x00
+#define PIO3_2_TIMER    NO_TIMER
+#define PIO3_2_MATCH    0
+#define PIO3_2_PWM      0
+
+#define PIO3_3_CMSIS    PIO3_3
+#define PIO3_3_PIN      3
+#define PIO3_3_PORT     LPC_GPIO3
+#define PIO3_3_OUTPUT   0x00
+#define PIO3_3_TIMER    NO_TIMER
+#define PIO3_3_MATCH    0
+#define PIO3_3_PWM      0
+
+#define PIO3_4_CMSIS    PIO3_4
+#define PIO3_4_PIN      4
+#define PIO3_4_PORT     LPC_GPIO3
+#define PIO3_4_OUTPUT   0x00
+#define PIO3_4_TIMER    NO_TIMER
+#define PIO3_4_MATCH    0
+#define PIO3_4_PWM      0
+
+#define PIO3_5_CMSIS    PIO3_5
+#define PIO3_5_PIN      5
+#define PIO3_5_PORT     LPC_GPIO3
+#define PIO3_5_OUTPUT   0x00
+#define PIO3_5_TIMER    NO_TIMER
+#define PIO3_5_MATCH    0
+#define PIO3_5_PWM      0

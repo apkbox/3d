@@ -349,9 +349,10 @@
 
   Note: don't miss these newlines (\n) and backslashes (\).
 */
-/*
-#define CANNED_CYCLE "G1 X100 F3000\n" \
+//*
+#define CANNED_CYCLE \
+"G1 X100 F3000\n" \
 "G4 P500\n" \
 "G1 X0\n" \
 "G4 P500\n"
-*/
+//*/
