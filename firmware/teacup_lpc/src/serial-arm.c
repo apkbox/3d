@@ -29,23 +29,48 @@
   Set up baud generator and interrupts, clear buffers.
 */
 void serial_init() {
+  int tmp;
 
+  // Enable clock for IOCON
+  LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 16);
   // Turn on UART power.
   LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 12);
 
+  // Pinout the UART. No need to set GPIO stuff, like data direction.
+  LPC_IOCON->RXD_CMSIS = 0x01 << 0  // Function RXD.
+                       | 0x00 << 3; // Pullup enabled.
+  LPC_IOCON->TXD_CMSIS = 0x01 << 0  // Function TXD.
+                       | 0x00 << 3; // Pullup inactive.
+
+  LPC_SYSCON->UARTCLKDIV = 0x1;
+
   // Enable fifos and default RX trigger level.
   LPC_UART->FCR = 1 << 0  // FIFO Enable - 0 = Disabled, 1 = Enabled.
-                | 0 << 1  // Rx Fifo Reset.
-                | 0 << 2  // Tx Fifo Reset.
+                | 1 << 1  // Rx Fifo Reset.
+                | 1 << 2  // Tx Fifo Reset.
                 | 0 << 6; // Rx irq trigger level.
                           // 0 = 1 char, 1 = 4 chars, 2 = 8 chars, 3 = 14 chars.
+
+  LPC_UART->FCR = 0;
+
+  while (LPC_UART->LSR & 1)
+  {
+      int tmp = LPC_UART->RBR;
+  }
 
   // Disable IRQs.
   LPC_UART->IER = 0 << 0  // Rx Data available irq enable.
                 | 0 << 1  // Tx Fifo empty irq enable.
                 | 0 << 2; // Rx Line Status irq enable.
 
-  LPC_SYSCON->UARTCLKDIV = 0x1;
+  LPC_UART->LCR = 0;
+  LPC_UART->ACR = 0;
+  LPC_UART->MCR = 0;
+  LPC_UART->RS485CTRL = 0;
+  LPC_UART->RS485DLY = 0;
+  LPC_UART->ADRMATCH = 0;
+  tmp = LPC_UART->MSR;
+  tmp = LPC_UART->LSR;
 
   /**
     Calculating the neccessary values for a proper baud rate is pretty complex
@@ -64,6 +89,8 @@ void serial_init() {
     #define UART_DLM 0x00
     #define UART_DLL 0x17
     #define UART_FDR 0xF2
+    //#define UART_DLL 26
+    //#define UART_FDR 0x10
   //#elif (__SYSTEM_CLOCK == xxx) && (BAUD == xxx)
     // Define more combinations here, Teacup reports the neccessary values
     // at startup time.
@@ -76,10 +103,11 @@ void serial_init() {
     // Set divider values.
     LPC_UART->DLM = UART_DLM;
     LPC_UART->DLL = UART_DLL;
-    LPC_UART->FDR = UART_FDR;
 
     // Clear LCR[DLAB].
     LPC_UART->LCR &= ~(1 << 7);
+
+    LPC_UART->FDR = UART_FDR;
   #else
     /**
       Calculate baud rate at runtime and later report it to the user. This
@@ -177,11 +205,14 @@ void serial_init() {
                 | 0        << 3  // Parity disabled.
                 | 0        << 4; // 0 = odd parity, 1 = even parity.
 
-  // Pinout the UART. No need to set GPIO stuff, like data direction.
-  LPC_IOCON->RXD_CMSIS = 0x01 << 0  // Function RXD.
-                       | 0x02 << 3; // Pullup enabled.
-  LPC_IOCON->TXD_CMSIS = 0x01 << 0  // Function TXD.
-                       | 0x00 << 3; // Pullup inactive.
+  // Enable fifos and default RX trigger level.
+  LPC_UART->FCR = 1 << 0  // FIFO Enable - 0 = Disabled, 1 = Enabled.
+                | 1 << 1  // Rx Fifo Reset.
+                | 1 << 2  // Tx Fifo Reset.
+                | 0 << 6; // Rx irq trigger level.
+                          // 0 = 1 char, 1 = 4 chars, 2 = 8 chars, 3 = 14 chars.
+
+  LPC_UART->TER = (1 << 7);
 
   #ifndef UART_DLM
     /**
