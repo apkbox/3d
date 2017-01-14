@@ -32,17 +32,17 @@
 
     Valid range: 20 to 4'0960'000 (0.02 to 40960 steps/mm)
 */
-#define STEPS_PER_M_X            1280000
-#define STEPS_PER_M_Y            1280000
-#define STEPS_PER_M_Z            1280000
+#define STEPS_PER_M_X            10000
+#define STEPS_PER_M_Y            10000
+#define STEPS_PER_M_Z            157480
 #define STEPS_PER_M_E            96271
 
 /** \def MAXIMUM_FEEDRATE_X MAXIMUM_FEEDRATE_Y MAXIMUM_FEEDRATE_Z MAXIMUM_FEEDRATE_E
   Used for G0 rapid moves and as a cap for all other feedrates.
 */
-#define MAXIMUM_FEEDRATE_X       600
-#define MAXIMUM_FEEDRATE_Y       600
-#define MAXIMUM_FEEDRATE_Z       600
+#define MAXIMUM_FEEDRATE_X       20000
+#define MAXIMUM_FEEDRATE_Y       20000
+#define MAXIMUM_FEEDRATE_Z       20000
 #define MAXIMUM_FEEDRATE_E       2000
 
 /** \def SEARCH_FEEDRATE_X SEARCH_FEEDRATE_Y SEARCH_FEEDRATE_Z
@@ -127,7 +127,7 @@
     Units: mm/s^2
     Useful range: 1 to 10'000
 */
-#define ACCELERATION             100
+#define ACCELERATION             500
 
 /** \def LOOKAHEAD
   Define this to enable look-ahead during *ramping* acceleration to smoothly
@@ -349,10 +349,10 @@
 
   Note: don't miss these newlines (\n) and backslashes (\).
 */
-//*
+/*
 #define CANNED_CYCLE \
-"G1 X100 F3000\n" \
+"G1 X100 F20000\n" \
 "G4 P500\n" \
-"G1 X0\n" \
+"G1 X0 F3000\n" \
 "G4 P500\n"
-//*/
+*/

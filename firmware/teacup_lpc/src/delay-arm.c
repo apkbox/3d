@@ -48,7 +48,7 @@ void delay_us(uint16_t delay) {
         delay--;
       }
     #else
-      volatile unsigned int cycles = delay * 18UL / (1000000000 / SystemCoreClock);
+      volatile unsigned int cycles = delay * 150UL / (1000000000 / SystemCoreClock);
     while (cycles--);
     #endif
   #else

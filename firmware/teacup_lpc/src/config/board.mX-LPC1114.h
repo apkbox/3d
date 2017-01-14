@@ -47,7 +47,7 @@
 
 #define X_STEP_PIN               PIO2_0
 #define X_DIR_PIN                PIO2_1
-#define X_MIN_PIN                PIO2_10
+//#define X_MIN_PIN                PIO2_10
 //#define X_MAX_PIN                PIO1_8
 //#define X_ENABLE_PIN             xxxx
 //#define X_INVERT_DIR
@@ -57,7 +57,7 @@
 
 #define Y_STEP_PIN               PIO2_2
 #define Y_DIR_PIN                PIO2_3
-#define Y_MIN_PIN                PIO2_10
+//#define Y_MIN_PIN                PIO2_10
 //#define Y_MAX_PIN                PIO1_8
 //#define Y_ENABLE_PIN             xxxx
 //#define Y_INVERT_DIR
@@ -67,7 +67,7 @@
 
 #define Z_STEP_PIN               PIO1_5
 #define Z_DIR_PIN                PIO1_8
-#define Z_MIN_PIN                PIO2_10
+//#define Z_MIN_PIN                PIO2_10
 //#define Z_MAX_PIN                PIO1_8
 //#define Z_ENABLE_PIN             xxxx
 //#define Z_INVERT_DIR

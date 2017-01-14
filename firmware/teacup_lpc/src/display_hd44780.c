@@ -48,7 +48,7 @@ void display_greeting(void) {
   }
 
   // Allow the user to worship our work for a moment :-)
-  delay_ms(5000);
+  delay_ms(1000);
 }
 
 /**
