@@ -293,6 +293,7 @@
 #define PIO1_10_PIN      10
 #define PIO1_10_PORT     LPC_GPIO1
 #define PIO1_10_OUTPUT   0x00
+#define PIO1_10_ADC      6
 #define PIO1_10_TIMER    LPC_TMR16B1
 #define PIO1_10_MATCH    0
 #define PIO1_10_PWM      0
@@ -301,6 +302,7 @@
 #define PIO1_11_PIN      11
 #define PIO1_11_PORT     LPC_GPIO1
 #define PIO1_11_OUTPUT   (0x01 << 7)
+#define PIO1_11_ADC      7
 #define PIO1_11_TIMER    NO_TIMER
 #define PIO1_11_MATCH    0
 #define PIO1_11_PWM      0

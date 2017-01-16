@@ -86,11 +86,12 @@ void serial_init() {
     564 bytes smaller.
   */
   #if (__SYSTEM_CLOCK == 48000000UL) && (BAUD == 115200)
+    //#define UART_DLM 0x00
+    //#define UART_DLL 0x17
+    //#define UART_FDR 0xF2
     #define UART_DLM 0x00
-    #define UART_DLL 0x17
-    #define UART_FDR 0xF2
-    //#define UART_DLL 26
-    //#define UART_FDR 0x10
+    #define UART_DLL 26
+    #define UART_FDR 0x10
   //#elif (__SYSTEM_CLOCK == xxx) && (BAUD == xxx)
     // Define more combinations here, Teacup reports the neccessary values
     // at startup time.
