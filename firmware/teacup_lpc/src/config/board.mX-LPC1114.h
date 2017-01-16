@@ -109,9 +109,9 @@
   firmware binary about 4.5 kB smaller.
 
   Connecting a device to SPI actually uses 4 signal lines, the other three
-  pins are choosen by Teacup automatically.
+  pins are chosen by Teacup automatically.
 */
-//#define SD_CARD_SELECT_PIN       xxxx
+#define SD_CARD_SELECT_PIN       PIO0_2
 
 /** \def MCP3008_SELECT_PIN
 

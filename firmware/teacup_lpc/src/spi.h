@@ -10,8 +10,8 @@
 /**
   Test configuration.
 */
-#ifdef __ARMEL__
-  #error SPI (SD_CARD_SELECT_PIN, TEMP_MAX6675, TEMP_MCP3008) not yet supported on ARM.
+#if defined __ARMEL__ && (defined TEMP_MAX6675 || defined TEMP_MCP3008)
+  #error SPI (TEMP_MAX6675, TEMP_MCP3008) not yet supported on ARM.
 #endif
 
 // Uncomment this to double SPI frequency from (F_CPU / 4) to (F_CPU / 2).
@@ -67,58 +67,15 @@ inline void spi_deselect_mcp3008(void) {
 }
 #endif /* TEMP_MCP3008 */
 
-/** Set SPI clock speed to something between 100 and 400 kHz.
-
-  This is needed for initialising SD cards. We set the whole SPCR register
-  in one step, because this is faster than and'ing in bits.
-
-  About dividers. We have:
-  SPCR = 0x50; // normal mode: (F_CPU / 4), 2x mode: (F_CPU / 2)
-  SPCR = 0x51; // normal mode: (F_CPU / 16), 2x mode: (F_CPU / 8)
-  SPCR = 0x52; // normal mode: (F_CPU / 64), 2x mode: (F_CPU / 32)
-  SPCR = 0x53; // normal mode: (F_CPU / 128), 2x mode: (F_CPU / 64)
-
-  For now we always choose the /128 divider, because it fits nicely in all
-  expected situations:
-    F_CPU                    16 MHz    20 MHz
-    SPI clock normal mode   125 kHz   156 kHz
-    SPI clock 2x mode       250 kHz   312 kHz
-
-  About the other bits:
-  0x50 = (1 << SPE) | (1 << MSTR);
-  This is Master SPI mode, SPI enabled, interrupts disabled, polarity mode 0
-  (right for SD cards).
-  See ATmega164/324/644/1284 data sheet, section 18.5.1, page 164.
-*/
-static void spi_speed_100_400(void) __attribute__ ((always_inline));
-inline void spi_speed_100_400(void) {
-  SPCR = 0x53;
-}
+/** Set SPI clock speed to something between 100 and 400 kHz. */
+inline void spi_speed_100_400(void) __attribute__ ((always_inline));
 
 /** Set SPI clock speed to maximum.
 */
-static void spi_speed_max(void) __attribute__ ((always_inline));
-inline void spi_speed_max(void) {
-  SPCR = 0x50; // See list at spi_speed_100_400().
-}
+inline void spi_speed_max(void) __attribute__ ((always_inline));
 
-/** Exchange a byte over SPI.
-
-  Yes, SPI is that simple and you can always only swap bytes. To retrieve
-  a byte, simply send a dummy value, like: mybyte = spi_rw(0);
-
-  As we operate in master mode, we don't have to fear to hang due to
-  communications errors (e.g. missing a clock beat).
-
-  Note: insisting on inlinig (attribute always_inline) costs about 80 bytes
-        with the current SD card code.
-*/
-static uint8_t spi_rw(uint8_t) __attribute__ ((always_inline));
-inline uint8_t spi_rw(uint8_t byte) {
-  SPDR = byte;
-  loop_until_bit_is_set(SPSR, SPIF);
-  return SPDR;
-}
+/** Exchange a byte over SPI. */
+inline uint8_t spi_rw(uint8_t) __attribute__ ((always_inline));
 
 #endif /* SPI */
 

@@ -31,6 +31,17 @@
 #define TXD             PIO1_7
 #define TXD_CMSIS       PIO1_7_CMSIS
 
+/** Pins for SPI
+*/
+#define SCK             PIO2_11
+#define SCK_CMSIS       PIO2_11_CMSIS
+#define MOSI            PIO0_9
+#define MOSI_CMSIS      PIO0_9_CMSIS
+#define MISO            PIO0_8
+#define MISO_CMSIS      PIO0_8_CMSIS
+#define SSEL            PIO0_2
+#define SSEL_CMSIS      PIO0_2_CMSIS
+
 /**
   Offsets to the various GPIO registers. See chapter 12.3 in LPC111x User
   Manual.
