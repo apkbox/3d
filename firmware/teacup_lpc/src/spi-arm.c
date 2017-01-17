@@ -34,26 +34,26 @@ void spi_init() {
 
   // Use manually driven CS/SSEL
   SET_OUTPUT(SD_CARD_SELECT_PIN);
+  WRITE(SD_CARD_SELECT_PIN, 1);
   //LPC_IOCON->SSEL_CMSIS = 0x01 << 0;  // Function SSEL0.
+
+  /* Reset SPI block */
+  LPC_SYSCON->PRESETCTRL &= ~(1 << 0);
+  LPC_SYSCON->PRESETCTRL |= (1 << 0); /* Reset SPI block */
 
   // Turn on SPI/SSP power.
   LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 11);
 
   LPC_SYSCON->SSP0CLKDIV = 2;
 
-  LPC_SYSCON->PRESETCTRL |= (1 << 0); /* Reset SPI block */
-
-  LPC_SSP0->IMSC = 0; /* Disable interrupts */
-  LPC_SSP0->ICR = 0; /* Clear pending interrupts */
+  //LPC_SSP0->IMSC = 0; /* Disable interrupts */
+  //LPC_SSP0->ICR = 0; /* Clear pending interrupts */
 
   LPC_SSP0->CR0 = (0x7 << 0)  /* DSS = 8 bit */
                 | (0x0 << 4)  /* FRF = SPI */
                 | (0 << 6)    /* CPOL = 0 */
                 | (0 << 7)    /* CPHA = 0 */
-                | (0 << 8);   /* SCR = 35 (Serial clock rate) */
-  LPC_SSP1->CR1 = (0 << 0) /* LBM = 0 Loopback mode */
-                | (1 << 1) /* SSE = 1 enable SPI */
-                | (0 << 2); /* MS = 0 (Master) */
+                | (9 << 8);   /* SCR = 39 (Serial clock rate) */
 
   LPC_SSP0->CPSR = 0x2; /* Prescaler */
 
@@ -62,41 +62,22 @@ void spi_init() {
     int Dummy = LPC_SSP0->DR;   /* clear the RxFIFO */
   }
 
+  LPC_SSP0->CR1 = 0x02;
+
   // This sets the whole SPRC register.
   spi_speed_100_400();
 }
 
 /** Set SPI clock speed to something between 100 and 400 kHz.
-
-  This is needed for initialising SD cards. We set the whole SPCR register
-  in one step, because this is faster than and'ing in bits.
-
-  About dividers. We have:
-  SPCR = 0x50; // normal mode: (F_CPU / 4), 2x mode: (F_CPU / 2)
-  SPCR = 0x51; // normal mode: (F_CPU / 16), 2x mode: (F_CPU / 8)
-  SPCR = 0x52; // normal mode: (F_CPU / 64), 2x mode: (F_CPU / 32)
-  SPCR = 0x53; // normal mode: (F_CPU / 128), 2x mode: (F_CPU / 64)
-
-  For now we always choose the /128 divider, because it fits nicely in all
-  expected situations:
-    F_CPU                    16 MHz    20 MHz
-    SPI clock normal mode   125 kHz   156 kHz
-    SPI clock 2x mode       250 kHz   312 kHz
-
-  About the other bits:
-  0x50 = (1 << SPE) | (1 << MSTR);
-  This is Master SPI mode, SPI enabled, interrupts disabled, polarity mode 0
-  (right for SD cards).
-  See ATmega164/324/644/1284 data sheet, section 18.5.1, page 164.
 */
 inline void spi_speed_100_400(void) {
-  // SPCR = 0x53;
+  LPC_SSP0->CPSR = 8; // 300kHz
 }
 
 /** Set SPI clock speed to maximum.
 */
 inline void spi_speed_max(void) {
-  // SPCR = 0x50; // See list at spi_speed_100_400().
+  LPC_SSP0->CPSR = 2; // 1.2Mhz
 }
 
 /** Exchange a byte over SPI.
@@ -108,7 +89,7 @@ inline uint8_t spi_rw(uint8_t byte) {
 
   LPC_SSP0->DR = byte;
 
-  while((LPC_SSP0->SR & 0x4) == 0) {
+  while((LPC_SSP0->SR & 0x14) != 0x4) {
     /* Wait until RNE is set */
   }
 
