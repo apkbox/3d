@@ -31,7 +31,10 @@ void spi_init() {
   LPC_IOCON->SCK_LOC = 1;     /* SCK0 on PIO2_11 */
   LPC_IOCON->MISO_CMSIS = 0x01 << 0;  // Function MISO0.
   LPC_IOCON->MOSI_CMSIS = 0x01 << 0;  // Function MOSI0.
-  LPC_IOCON->SSEL_CMSIS = 0x01 << 0;  // Function SSEL0.
+
+  // Use manually driven CS/SSEL
+  SET_OUTPUT(SD_CARD_SELECT_PIN);
+  //LPC_IOCON->SSEL_CMSIS = 0x01 << 0;  // Function SSEL0.
 
   // Turn on SPI/SSP power.
   LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 11);

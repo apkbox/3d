@@ -68,14 +68,14 @@ inline void spi_deselect_mcp3008(void) {
 #endif /* TEMP_MCP3008 */
 
 /** Set SPI clock speed to something between 100 and 400 kHz. */
-inline void spi_speed_100_400(void) __attribute__ ((always_inline));
+inline void spi_speed_100_400(void);
 
 /** Set SPI clock speed to maximum.
 */
-inline void spi_speed_max(void) __attribute__ ((always_inline));
+inline void spi_speed_max(void);
 
 /** Exchange a byte over SPI. */
-inline uint8_t spi_rw(uint8_t) __attribute__ ((always_inline));
+inline uint8_t spi_rw(uint8_t);
 
 #endif /* SPI */
 
