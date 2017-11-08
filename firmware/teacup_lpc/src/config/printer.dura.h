@@ -34,16 +34,16 @@
 */
 #define STEPS_PER_M_X            10000
 #define STEPS_PER_M_Y            10000
-#define STEPS_PER_M_Z            157480
-#define STEPS_PER_M_E            96271
+#define STEPS_PER_M_Z            283464
+#define STEPS_PER_M_E            10000
 
 /** \def MAXIMUM_FEEDRATE_X MAXIMUM_FEEDRATE_Y MAXIMUM_FEEDRATE_Z MAXIMUM_FEEDRATE_E
   Used for G0 rapid moves and as a cap for all other feedrates.
 */
-#define MAXIMUM_FEEDRATE_X       20000
-#define MAXIMUM_FEEDRATE_Y       20000
-#define MAXIMUM_FEEDRATE_Z       20000
-#define MAXIMUM_FEEDRATE_E       2000
+#define MAXIMUM_FEEDRATE_X       25000
+#define MAXIMUM_FEEDRATE_Y       25000
+#define MAXIMUM_FEEDRATE_Z       25000
+#define MAXIMUM_FEEDRATE_E       25000
 
 /** \def SEARCH_FEEDRATE_X SEARCH_FEEDRATE_Y SEARCH_FEEDRATE_Z
   Used when doing precision endstop search and as default feedrate. No
@@ -180,7 +180,7 @@
   One can't use USE_INTERNAL_PULLUPS and USE_INTERNAL_PULLDOWNS at the same
   time, of course.
 */
-//#define USE_INTERNAL_PULLUPS
+#define USE_INTERNAL_PULLUPS
 
 /** \def USE_INTERNAL_PULLDOWNS
 

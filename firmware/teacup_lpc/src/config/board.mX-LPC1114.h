@@ -50,14 +50,14 @@
 //#define X_MIN_PIN                PIO2_10
 //#define X_MAX_PIN                PIO1_8
 //#define X_ENABLE_PIN             xxxx
-//#define X_INVERT_DIR
-#define X_INVERT_MIN
+#define X_INVERT_DIR
+//#define X_INVERT_MIN
 //#define X_INVERT_MAX
 //#define X_INVERT_ENABLE
 
 #define Y_STEP_PIN               PIO2_2
 #define Y_DIR_PIN                PIO2_3
-//#define Y_MIN_PIN                PIO2_10
+#define Y_MIN_PIN                PIO2_10
 //#define Y_MAX_PIN                PIO1_8
 //#define Y_ENABLE_PIN             xxxx
 //#define Y_INVERT_DIR
@@ -71,11 +71,11 @@
 //#define Z_MAX_PIN                PIO1_8
 //#define Z_ENABLE_PIN             xxxx
 //#define Z_INVERT_DIR
-#define Z_INVERT_MIN
+//#define Z_INVERT_MIN
 //#define Z_INVERT_MAX
 //#define Z_INVERT_ENABLE
 
-#define E_STEP_PIN               PIO3_5
+#define E_STEP_PIN               PIO3_3
 #define E_DIR_PIN                PIO3_4
 //#define E_ENABLE_PIN             xxxx
 //#define E_INVERT_DIR

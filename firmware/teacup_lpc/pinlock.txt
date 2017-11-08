@@ -3,9 +3,9 @@
 0   SW4/RESET        *BED_THERMISTOR      *X_STEP               LCD_EN
 1   SW5              *EXTR_THERMISTOR     *X_DIR                LCD_RW
 2   SD_SSEL          AOUT                 *Y_STEP               LCD_RS
-3   USB_VBUS         SWDIO                *Y_DIR                
+3   USB_VBUS         SWDIO                *Y_DIR                *E_STEP/PS2_CLK 
 4   EE_SCL           ADC                  USB_DM                *E_DIR/PS2_DATA
-5   EE_SDA           *Z_STEP              USB_DP                *E_STEP/PS2_CLK 
+5   EE_SDA           *Z_STEP              USB_DP                
 6   USB_CONN         RXD                  LCD_DATA4             X
 7   SW6/ACT_LED      TXD                  LCD_DATA5             X
 8   SD_MISO          *Z_DIR               LCD_DATA6             X
