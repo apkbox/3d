@@ -47,11 +47,11 @@
 
 #define X_STEP_PIN               PIO2_0
 #define X_DIR_PIN                PIO2_1
-//#define X_MIN_PIN                PIO2_10
+#define X_MIN_PIN                PIO3_5
 //#define X_MAX_PIN                PIO1_8
 //#define X_ENABLE_PIN             xxxx
-#define X_INVERT_DIR
-//#define X_INVERT_MIN
+//#define X_INVERT_DIR
+#define X_INVERT_MIN
 //#define X_INVERT_MAX
 //#define X_INVERT_ENABLE
 

@@ -690,6 +690,7 @@ void dda_step(DDA *dda) {
         move_state.steps[E]--;
         move_state.time[E] += dda->step_interval[E];
       }
+      delay_us(1);
       unstep();
 
       // Find the next stepper to step.
@@ -753,6 +754,7 @@ void dda_step(DDA *dda) {
 	// turn off step outputs, hopefully they've been on long enough by now to register with the drivers
 	// if not, too bad. or insert a (very!) small delay here, or fire up a spare timer or something.
 	// we also hope that we don't step before the drivers register the low- limit maximum speed if you think this is a problem.
+    delay_us(1);
 	unstep();
 }
 
