@@ -31,7 +31,7 @@ Use block of known height to set Z-axis zero when changing tool as following.
 * Mill out pocked to depth `N mm`.
 * Rotate to zero and finish walls `(T)`.
 * Mill through round opening for motor axile.
-* Rotate table to angle `(W)` and mill out a pocket `(U)` to depth `11 mm` using 5 mm cutter.
+* Rotate table to angle `(W)` and mill out a spring pocket to depth `11 mm` using 5 mm cutter.
 * Rotate table as necessary and mill out rest of the features to depth `6 mm`.
 * Position X, Y to zero (rotary table center).
 * Remove part and jig.
