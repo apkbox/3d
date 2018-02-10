@@ -50,7 +50,7 @@
 #define X_MIN_PIN                PIO3_5
 //#define X_MAX_PIN                PIO1_8
 //#define X_ENABLE_PIN             xxxx
-//#define X_INVERT_DIR
+#define X_INVERT_DIR
 #define X_INVERT_MIN
 //#define X_INVERT_MAX
 //#define X_INVERT_ENABLE
@@ -81,7 +81,7 @@
 //#define E_INVERT_DIR
 //#define E_INVERT_ENABLE
 
-#define PS_ON_PIN                PIO0_11
+// #define PS_ON_PIN                PIO0_11
 //#define PS_INVERT_ON
 //#define PS_MOSFET_PIN            xxxx
 #define STEPPER_ENABLE_PIN       PIO0_11

@@ -11,7 +11,7 @@
 8   SD_MISO          *Z_DIR               LCD_DATA6             X
 9   SD_MOSI          *BED_HEATER          LCD_DATA7             X
 10  SWCLK            *EXTR_HEATER         *Y_LIMIT_SW           X
-11  *PS_ON           BUZZER               SD_SCK                X
+11  *STEPPER_EN      BUZZER               SD_SCK                X
 
 
 Jumpers:
